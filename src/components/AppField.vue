@@ -19,12 +19,19 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { prefModule } from '@/store/modules/preference';
 
 @Component
 export default class AppField extends Vue {
-  private cols: number = 15;
-  private rows: number = 8;
-  private blockSize: number = 50;
+  get cols(): number {
+    return prefModule.COLS;
+  }
+
+  get rows(): number {
+    return prefModule.ROWS;
+  }
+
+  private blockSize: number = 30;
 }
 </script>
 
