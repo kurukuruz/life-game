@@ -2,9 +2,15 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
       dark
     >
+      <v-img
+        src="@/assets/logo.png"
+        alt="logo"
+        width="30"
+        class="shrink mr-2"
+        contain
+      />
       <v-toolbar-title>Life Game</v-toolbar-title>
 
       <v-spacer></v-spacer>
