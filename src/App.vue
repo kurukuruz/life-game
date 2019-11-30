@@ -20,18 +20,18 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <AppMain/>
     </v-content>
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import AppMain from '@/components/AppMain.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    AppMain,
   },
 })
 export default class App extends Vue {}
