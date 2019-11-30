@@ -1,6 +1,7 @@
 import { Mutation, MutationAction, Action, VuexModule, getModule, Module } from 'vuex-module-decorators';
 import store from '@/store';
 import { prefModule } from '@/store/modules/preference';
+import { nextStates } from '@/util/life-game';
 
 @Module({ dynamic: true, store, name: 'block-states', namespaced: true })
 class BlockStates extends VuexModule {
@@ -8,6 +9,11 @@ class BlockStates extends VuexModule {
 
   get BLOCK_STATES(): boolean[][] {
     return this.blockStates.map((row) => row.slice());
+  }
+
+  @Action
+  public next(): void {
+    this.update(nextStates(this.BLOCK_STATES));
   }
 
   @Action
