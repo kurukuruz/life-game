@@ -1,5 +1,11 @@
 <template>
   <v-card>
+    <v-btn
+      @click="onRefresh"
+      block
+    >
+      <v-icon>mdi-refresh</v-icon>
+    </v-btn>
     <v-slider
       :value="cols"
       @change="onChangeCols"
@@ -22,6 +28,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
 import { prefModule } from '@/store/modules/preference';
+import { blockStatesModule } from '@/store/modules/block-states';
 
 @Component
 export default class AppPreference extends Vue {
@@ -39,6 +46,11 @@ export default class AppPreference extends Vue {
 
   private onChangeRows(newValue: number): void {
     prefModule.setRows(newValue);
+  }
+
+  @Emit('refresh')
+  private onRefresh(): void {
+    blockStatesModule.refreshAll();
   }
 }
 </script>
