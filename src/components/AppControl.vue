@@ -1,40 +1,49 @@
 <template>
-  <v-card
-    class="d-flex"
-  >
+  <v-card>
     <div
-      class="flex-grow-1"
-      v-show="!isPlaying"
+      class="d-flex"
     >
-      <v-btn
-        @click="doPlay"
-        block
+      <div
+        class="flex-grow-1"
+        v-show="!isPlaying"
       >
-        <v-icon>mdi-play</v-icon>
-      </v-btn>          
-    </div>
-    <div
-      class="flex-grow-1"
-      v-show="isPlaying"
-    >
-      <v-btn
-        @click="doPause"
-        block
+        <v-btn
+          @click="doPlay"
+          block
+        >
+          <v-icon>mdi-play</v-icon>
+        </v-btn>          
+      </div>
+      <div
+        class="flex-grow-1"
+        v-show="isPlaying"
       >
-        <v-icon>mdi-pause</v-icon>
-      </v-btn>          
-    </div>
-    <div
-      class="flex-grow-1"
-    >
-      <v-btn
-        @click="doNext"
-        block
-        :disabled="isPlaying"
+        <v-btn
+          @click="doPause"
+          block
+        >
+          <v-icon>mdi-pause</v-icon>
+        </v-btn>          
+      </div>
+      <div
+        class="flex-grow-1"
       >
-        <v-icon>mdi-skip-next</v-icon>
-      </v-btn>
+        <v-btn
+          @click="doNext"
+          block
+          :disabled="isPlaying"
+        >
+          <v-icon>mdi-skip-next</v-icon>
+        </v-btn>
+      </div>
     </div>
+    <v-slider
+      v-model="speed"
+      @change="changeSpeed"
+      label="speed"
+      min="10"
+      max="80"
+    />
   </v-card>
 </template>
 
@@ -46,6 +55,11 @@ import { blockStatesModule } from '@/store/modules/block-states';
 export default class AppControl extends Vue {
   private isPlaying: boolean = false;
   private timerID?: number;
+  private speed: number = 20;
+
+  get interval(): number {
+    return 10000 / this.speed;
+  }
 
   private doNext(): void {
     blockStatesModule.next();
@@ -53,12 +67,20 @@ export default class AppControl extends Vue {
 
   private doPlay(): void {
     this.isPlaying = true;
-    this.timerID = setInterval(this.doNext, 500);
+    this.timerID = setInterval(this.doNext, this.interval);
   }
 
   private doPause(): void {
     clearInterval(this.timerID);
+    this.timerID = undefined;
     this.isPlaying = false;
+  }
+
+  private changeSpeed(): void {
+    if (this.timerID !== undefined) {
+      this.doPause();
+      this.doPlay();
+    }
   }
 }
 </script>
