@@ -1,5 +1,7 @@
 <template>
-  <v-card>
+  <v-card
+    class="pa-2"
+  >
     <v-btn
       @click="onRefresh"
       block

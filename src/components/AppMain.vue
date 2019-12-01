@@ -1,7 +1,10 @@
 <template>
   <v-container>
     <v-row>
-      <v-col>
+      <v-col
+        cols="12"
+        md="8"
+      >
         <AppField/>
       </v-col>
       <v-col>

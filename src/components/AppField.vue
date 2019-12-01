@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-sheet
+    <div
       v-for="(row, index) in blockStates"
       :key="index"
       class="app-flex app-flex-center"
@@ -14,7 +14,7 @@
         :height="blockSize"
         :dark="state"
       ></v-card>
-    </v-sheet>
+    </div>
   </v-container>
 </template>
 
