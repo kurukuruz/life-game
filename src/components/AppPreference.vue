@@ -15,7 +15,7 @@
       min="10"
       max="50"
       thumb-label
-    ></v-slider>
+    />
     <v-slider
       :value="rows"
       @change="onChangeRows"
@@ -23,7 +23,7 @@
       min="10"
       max="50"
       thumb-label
-    ></v-slider>
+    />
   </v-card>
 </template>
 

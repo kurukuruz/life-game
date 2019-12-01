@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div>
     <div
       v-for="(row, index) in blockStates"
       :key="index"
@@ -13,9 +13,9 @@
         :width="blockSize"
         :height="blockSize"
         :dark="state"
-      ></v-card>
+      />
     </div>
-  </v-container>
+  </div>
 </template>
 
 <script lang="ts">
