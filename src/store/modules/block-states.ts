@@ -35,7 +35,7 @@ class BlockStates extends VuexModule {
       this.BLOCK_STATES
       .map((row) => (
         row.length < prefModule.COLS
-          ? row.concat(new Array<boolean>(prefModule.COLS - row.length))
+          ? row.concat(new Array<boolean>(prefModule.COLS - row.length).fill(false))
           : row.slice(0, prefModule.COLS)
     )));
   }
@@ -46,7 +46,7 @@ class BlockStates extends VuexModule {
       (this.blockStates.length < prefModule.ROWS
         ? this.BLOCK_STATES
           .concat(new Array<boolean[]>(prefModule.ROWS - this.blockStates.length)
-            .fill(new Array<boolean>(prefModule.COLS)))
+            .fill(new Array<boolean>(prefModule.COLS).fill(false)))
         : this.BLOCK_STATES.slice(0, prefModule.ROWS)
     ));
   }
