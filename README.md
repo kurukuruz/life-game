@@ -1,4 +1,5 @@
 # life-game
+Conway's Game of Life on the browser.
 
 ## Project setup
 ```
