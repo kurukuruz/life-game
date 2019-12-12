@@ -37,8 +37,16 @@ export default class AppField extends Vue {
     return prefModule.ROWS;
   }
 
+  get fieldSize(): number {
+    switch (this.$vuetify.breakpoint.name) {
+      case 'xs': return this.$vuetify.breakpoint.width * 0.8;
+      case 'xl': return 800;
+    }
+    return 500;
+  }
+
   get blockSize(): number {
-    return Math.min(500 / this.cols, 500 / this.rows);
+    return Math.min(this.fieldSize / this.cols, this.fieldSize / this.rows);
   }
 
   private mounted(): void {
