@@ -3,7 +3,7 @@
     <div
       v-for="(row, index) in blockStates"
       :key="index"
-      class="app-flex app-flex-center"
+      class="d-flex justify-center"
     >
       <v-card
         v-for="(state, index) in row"
@@ -56,12 +56,3 @@ export default class AppField extends Vue {
   }
 }
 </script>
-
-<style scoped>
-.app-flex {
-  display: flex !important
-}
-.app-flex.app-flex-center {
-  justify-content: center
-}
-</style>
